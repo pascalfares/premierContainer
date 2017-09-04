@@ -13,11 +13,11 @@ def hello():
     try:
         visits = redis.incr("counter")
     except RedisError:
-        visits = "<i>cannot connect to Redis, counter disabled</i>"
+        visits = "<i>Connexion impossible à Redis, conteur non actif</i>"
 
-    html = "<h3>Hello {name}!</h3>" \
+    html = "<h3>Salut {name}!</h3>" \
            "<b>Hostname:</b> {hostname}<br/>" \
-           "<b>Visits:</b> {visits}"
+           "<b>Visites:</b> {visits}"
     return html.format(name=os.getenv("NAME", "world"), hostname=socket.gethostname(), visits=visits)
 
 if __name__ == "__main__":
